@@ -41,4 +41,4 @@ Banggeum/
 - `Store/MockStore.swift` accessor 를 Supabase 쿼리로 교체 + `Model/Models.swift` 에 `Codable`/`CodingKeys(snake_case)` 추가 → Web/Android 와 1:1.
 
 ## Bundle ID
-`com.banggeum.app`
+`duckring.banggeum.com`
