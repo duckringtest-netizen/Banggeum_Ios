@@ -5,6 +5,7 @@ struct RoomDetailView: View {
     @Environment(\.dismiss) private var dismiss
     let roomId: String
     @State private var showReserve = false
+    @State private var showContract = false
 
     var body: some View {
         guard let room = store.room(roomId) else {
@@ -119,11 +120,19 @@ struct RoomDetailView: View {
                     Button {
                         showReserve = true
                     } label: {
-                        Text(room.approvalMode == .auto ? "바로 방문 예약" : "방문 예약 요청")
-                            .font(.system(size: 16, weight: .bold)).foregroundStyle(BG.brandFg)
+                        Text("방문 예약")
+                            .font(.system(size: 15, weight: .bold)).foregroundStyle(BG.ink)
+                            .frame(maxWidth: .infinity).frame(height: 52)
+                            .overlay(RoundedRectangle(cornerRadius: 16).stroke(BG.border, lineWidth: 1))
+                    }.buttonStyle(.plain)
+                    Button {
+                        showContract = true
+                    } label: {
+                        Text("바로 계약")
+                            .font(.system(size: 15, weight: .bold)).foregroundStyle(BG.brandFg)
                             .frame(maxWidth: .infinity).frame(height: 52)
                             .background(BG.brand, in: RoundedRectangle(cornerRadius: 16))
-                    }
+                    }.buttonStyle(.plain)
                 }
                 .padding(.horizontal, 20).padding(.vertical, 12)
                 .background(BG.card.shadow(.drop(color: .black.opacity(0.06), radius: 8, y: -2)))
@@ -131,6 +140,10 @@ struct RoomDetailView: View {
             .sheet(isPresented: $showReserve) {
                 ReserveSheetView(room: room)
                     .presentationDetents([.medium, .large])
+            }
+            .sheet(isPresented: $showContract) {
+                ContractSheetView(room: room)
+                    .presentationDetents([.large])
             }
         )
     }

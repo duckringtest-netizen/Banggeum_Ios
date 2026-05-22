@@ -6,9 +6,11 @@ import Foundation
 enum UserRole: String { case tenant, landlord }
 
 enum RoomType: String {
+    case gositel  // 시작 카테고리 (고시텔 → 원룸 → 아파트 → 상가)
     case oneroom, officetel, studio, separated, twroom
     var label: String {
         switch self {
+        case .gositel: return "고시텔"
         case .oneroom: return "원룸"
         case .officetel: return "오피스텔"
         case .studio: return "스튜디오"

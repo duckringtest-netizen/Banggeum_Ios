@@ -107,6 +107,26 @@ final class MockStore: ObservableObject {
              lifeInfo: LifeInfo(sunlight: "good", noise: "quiet", mold: false, windowDir: "S", walkMinToStation: 9, walkMinToStore: 1, waterPressure: "strong"),
              faq: RoomFaq(maintenanceIncluded: true, moveInDate: "30일 후", petAllowed: true, shortTermOk: false, parking: true, floor: 15),
              approvalMode: .manual, unmannedOk: false),
+
+        Room(id: "r9", hostId: "u_host3", title: "서울대입구 고시촌 고시텔, 즉시 입주·보증금 적음", region: "서울대입구", address: "서울 관악구 신림동",
+             lat: 37.4842, lng: 126.9293, roomType: .gositel, deposit: 1_000_000, monthlyRent: 360_000, maintenanceFee: 0,
+             maintenanceIncluded: true, areaM2: 6.6, floor: 3, availableFromDays: 1,
+             photos: [img("g1a"), img("g1b")], status: .available,
+             description: "보증금 부담 없이 바로 들어올 수 있는 고시텔입니다. 관리비 포함(전기/수도/인터넷). 침대·책상·냉장고 풀옵션, 공용주방. 비대면으로 둘러보고 계약까지 가능해요.",
+             options: RoomOptions(washer: false, fridge: true, aircon: true, bed: true, desk: true, induction: false),
+             lifeInfo: LifeInfo(sunlight: "normal", noise: "quiet", mold: false, windowDir: "E", walkMinToStation: 5, walkMinToStore: 1, waterPressure: "normal"),
+             faq: RoomFaq(maintenanceIncluded: true, moveInDate: "내일", petAllowed: false, shortTermOk: true, parking: false, floor: 3),
+             approvalMode: .auto, unmannedOk: true),
+
+        Room(id: "r10", hostId: "u_host2", title: "혜화 대학병원 인근 고시텔, 단기 가능", region: "혜화", address: "서울 종로구 명륜동",
+             lat: 37.5821, lng: 127.0019, roomType: .gositel, deposit: 500_000, monthlyRent: 420_000, maintenanceFee: 0,
+             maintenanceIncluded: true, areaM2: 7.0, floor: 5, availableFromDays: 1,
+             photos: [img("g2a"), img("g2b")], status: .available,
+             description: "대학병원 도보권 고시텔. 단기(1개월~) 가능해서 인턴·실습생에게 좋아요. 관리비 포함, 풀옵션. 무인 방문 + 비대면 계약.",
+             options: RoomOptions(washer: false, fridge: true, aircon: true, bed: true, desk: true, induction: false),
+             lifeInfo: LifeInfo(sunlight: "good", noise: "quiet", mold: false, windowDir: "S", walkMinToStation: 6, walkMinToStore: 2, waterPressure: "strong"),
+             faq: RoomFaq(maintenanceIncluded: true, moveInDate: "내일", petAllowed: false, shortTermOk: true, parking: false, floor: 5),
+             approvalMode: .manual, unmannedOk: true),
     ]
 
     lazy var visitSlots: [VisitSlot] = rooms.enumerated().flatMap { (ri, room) -> [VisitSlot] in
